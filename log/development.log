@@ -100,3 +100,28 @@ Processing by Rails::WelcomeController#index as HTML
 Completed 200 OK in 22ms (Views: 12.3ms | ActiveRecord: 0.0ms)
 
 
+Started GET "/" for 127.0.0.1 at 2018-09-20 18:10:04 -0700
+Started GET "/" for 127.0.0.1 at 2018-09-20 18:10:14 -0700
+Processing by TasksController#index as HTML
+Completed 500 Internal Server Error in 107ms (ActiveRecord: 0.0ms)
+
+
+  
+NameError (undefined local variable or method `task' for #<TasksController:0x00007fa5bffa08b8>):
+  
+app/controllers/tasks_controller.rb:3:in `index'
+Processing by TasksController#index as HTML
+Completed 500 Internal Server Error in 116ms (ActiveRecord: 0.0ms)
+
+
+  
+NameError (undefined local variable or method `task' for #<TasksController:0x00007fa5bf287398>):
+  
+app/controllers/tasks_controller.rb:3:in `index'
+Started GET "/" for 127.0.0.1 at 2018-09-20 18:10:30 -0700
+Processing by TasksController#index as HTML
+  Rendering tasks/index.html.erb within layouts/application
+  Rendered tasks/index.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 569ms (Views: 564.7ms | ActiveRecord: 0.0ms)
+
+
