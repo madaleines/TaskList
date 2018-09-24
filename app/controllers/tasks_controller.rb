@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   def index
-    @tasks = Task.all
+    @tasks = Task.all.order(:completed, :created_at)
   end
 
   def show
@@ -32,8 +32,15 @@ class TasksController < ApplicationController
     redirect_back fallback_location: :tasks_path
   end
 
-  private
-  def task_params
-    return params.require(:task).permit(:name, :id)
+  def mark_complete
+    @task = Task.find_by(id: params[:id])
+    @task.toggle(:completed).save
+    redirect_to tasks_path
   end
+end
+
+private
+
+def task_params
+  return params.require(:task).permit(:title, :description, :due_date, :completed)
 end

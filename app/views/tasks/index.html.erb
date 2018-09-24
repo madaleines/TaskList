@@ -1,2 +1,21 @@
-<h1>Tasks#index</h1>
-<p>Find me in app/views/tasks/index.html.erb</p>
+<h2>Tasks List</h2>
+<ol>
+  <% @tasks.each do |task| %>
+  <li>
+    <span class="title">
+      <%=  task.title %>
+    </span>
+    due by <%= task.due_date %>
+    <br>
+
+    <% if task.completed == false %>
+    <%= link_to "Mark as Complete", mark_complete_path(task[:id]), method: :patch %>
+    <% else %>
+    <%= link_to "Mark Not Complete", mark_complete_path(task[:id]), method: :patch %>
+    <% end %>
+    <%= link_to "Edit", edit_task_path(task.id) %>
+    <%= link_to "Delete", task_path(task.id), method: :delete, data: { confirm: 'Are you sure you would like to DELETE this Task?' }  %>
+
+  </li>
+  <% end %>
+</ol>
